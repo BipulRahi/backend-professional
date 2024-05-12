@@ -18,6 +18,8 @@
 
 // Via promises
 
+
+// as we have to call the db again nd again that why 
 const asynchandler=(requestHandler)=>{
    return  (req,res,next)=>{
     Promise.resolve(requestHandler(req,res,next)).
