@@ -50,7 +50,7 @@ const registeruser = asynchandler(async (req, res) => {
         new ApiResponse(200,createduser,"user register successfully")
      )
 
-  res.json({ name, fullname, password, username });
+//   res.json({ name, fullname, password, username });
 });
 
 export { registeruser };
