@@ -1,1 +1,3 @@
 database always in another continent
+
+it not (req,res)  its (err,req,res,next)
