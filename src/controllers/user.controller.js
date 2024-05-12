@@ -70,4 +70,28 @@ const registeruser = asynchandler(async (req, res) => {
   //   res.json({ name, fullname, password, username });
 });
 
-export { registeruser };
+
+
+const loginuser=asynchandler(async(req,res)=>{
+    // req.body->data
+    //username or email
+    // find user 
+    // password check
+    // ccess nd refresh token generate 
+    // cookie
+
+    const {email,password,username}=req.body;
+    if(!username || !email) throw new ApiError(400,"user name or pass must needed");
+    if(!password) throw new ApiError(400,"password needed ");
+    
+    const user=await User.findOne({
+        $or:[{username},{email}]
+    })
+
+    if(!user) throw new ApiError("please sign up first");
+    const ispasswordValid=await user.isPasswordCorrect(password);
+    if(ispasswordValid) throw new ApiError(400,"User doesnt exists")
+
+})
+
+export { registeruser,loginuser };
